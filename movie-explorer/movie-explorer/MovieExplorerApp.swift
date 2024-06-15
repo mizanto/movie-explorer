@@ -1,5 +1,5 @@
 //
-//  movie_explorerApp.swift
+//  MovieExplorerApp.swift
 //  movie-explorer
 //
 //  Created by Sergey Bendak on 15.06.2024.
@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct movie_explorerApp: App {
+struct MovieExplorerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MoviesListView()
         }
     }
 }

@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ADCA57E72C1D96E9002533EB /* movie_explorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA57E62C1D96E9002533EB /* movie_explorerApp.swift */; };
-		ADCA57E92C1D96E9002533EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA57E82C1D96E9002533EB /* ContentView.swift */; };
+		ADCA57E72C1D96E9002533EB /* MovieExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA57E62C1D96E9002533EB /* MovieExplorerApp.swift */; };
+		ADCA57E92C1D96E9002533EB /* MoviesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA57E82C1D96E9002533EB /* MoviesListView.swift */; };
 		ADCA57EB2C1D96EA002533EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADCA57EA2C1D96EA002533EB /* Assets.xcassets */; };
 		ADCA57EE2C1D96EA002533EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADCA57ED2C1D96EA002533EB /* Preview Assets.xcassets */; };
+		ADCA57F52C1D97E9002533EB /* MovieCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA57F42C1D97E9002533EB /* MovieCard.swift */; };
+		ADCA57F72C1D9821002533EB /* MovieListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA57F62C1D9821002533EB /* MovieListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ADCA57E32C1D96E9002533EB /* movie-explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movie-explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADCA57E62C1D96E9002533EB /* movie_explorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movie_explorerApp.swift; sourceTree = "<group>"; };
-		ADCA57E82C1D96E9002533EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ADCA57E62C1D96E9002533EB /* MovieExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieExplorerApp.swift; sourceTree = "<group>"; };
+		ADCA57E82C1D96E9002533EB /* MoviesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListView.swift; sourceTree = "<group>"; };
 		ADCA57EA2C1D96EA002533EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADCA57ED2C1D96EA002533EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ADCA57F42C1D97E9002533EB /* MovieCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCard.swift; sourceTree = "<group>"; };
+		ADCA57F62C1D9821002533EB /* MovieListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,10 @@
 		ADCA57E52C1D96E9002533EB /* movie-explorer */ = {
 			isa = PBXGroup;
 			children = (
-				ADCA57E62C1D96E9002533EB /* movie_explorerApp.swift */,
-				ADCA57E82C1D96E9002533EB /* ContentView.swift */,
+				ADCA57E62C1D96E9002533EB /* MovieExplorerApp.swift */,
+				ADCA57F62C1D9821002533EB /* MovieListItem.swift */,
+				ADCA57E82C1D96E9002533EB /* MoviesListView.swift */,
+				ADCA57F42C1D97E9002533EB /* MovieCard.swift */,
 				ADCA57EA2C1D96EA002533EB /* Assets.xcassets */,
 				ADCA57EC2C1D96EA002533EB /* Preview Content */,
 			);
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADCA57E92C1D96E9002533EB /* ContentView.swift in Sources */,
-				ADCA57E72C1D96E9002533EB /* movie_explorerApp.swift in Sources */,
+				ADCA57E92C1D96E9002533EB /* MoviesListView.swift in Sources */,
+				ADCA57F72C1D9821002533EB /* MovieListItem.swift in Sources */,
+				ADCA57E72C1D96E9002533EB /* MovieExplorerApp.swift in Sources */,
+				ADCA57F52C1D97E9002533EB /* MovieCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
