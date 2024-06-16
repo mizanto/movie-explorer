@@ -12,7 +12,7 @@ struct MovieCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            if let backdropPath = movie.backdrop_path {
+            if let backdropPath = movie.backdropPath {
                 GeometryReader { geometry in
                     AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath)")) { image in
                         image
@@ -33,7 +33,7 @@ struct MovieCard: View {
                     .font(.headline)
                     .padding(.top, 8)
 
-                Text("Rating: \(movie.vote_average, specifier: "%.1f")")
+                Text("Rating: \(movie.voteAverage, specifier: "%.1f")")
                     .font(.subheadline)
 
                 Text("Genres: Unknown")
