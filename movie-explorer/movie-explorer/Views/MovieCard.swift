@@ -13,19 +13,7 @@ struct MovieCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if let backdropPath = movie.backdropPath {
-                GeometryReader { geometry in
-                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath)")) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: geometry.size.width, height: 240)
-                            .clipped()
-                    } placeholder: {
-                        ProgressView()
-                            .frame(width: geometry.size.width, height: 240)
-                    }
-                }
-                .frame(height: 240)
+                LoadableImage(path: backdropPath, height: 240)
             }
 
             VStack(alignment: .leading, spacing: 8) {
