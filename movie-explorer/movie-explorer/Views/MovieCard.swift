@@ -11,28 +11,47 @@ struct MovieCard: View {
     let movie: MovieListItem
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        ZStack(alignment: .bottom) {
             if let backdropPath = movie.backdropPath {
-                LoadableImage(path: backdropPath, height: 240)
+                LoadableImage(path: backdropPath, height: 320)
             }
 
-            VStack(alignment: .leading, spacing: 8) {
+            HStack {
                 Text(movie.title)
-                    .font(.headline)
-                    .padding(.top, 8)
-
-                Text("Rating: \(movie.voteAverage, specifier: "%.1f")")
+                    .font(.title3)
+                    .foregroundStyle(.white)
+                
+                Spacer()
+                
+                Text("\(movie.voteAverage, specifier: "%.1f")")
                     .font(.subheadline)
+                    .foregroundStyle(.white)
+                    .padding(4)
+                    .background(color(for: movie.voteAverage))
+                    .cornerRadius(4)
 
-                Text("Genres: Unknown")
-                    .font(.footnote)
-                    .padding(.bottom, 8)
+                
             }
-            .padding(.horizontal)
+            .padding()
+            .background(
+                LinearGradient(
+                    gradient: Gradient(
+                        colors: [Color.black.opacity(1.0),
+                                 Color.black.opacity(0.6),
+                                 Color.black.opacity(0.0)]
+                    ),
+                    startPoint: .bottom,
+                    endPoint: .top
+                )
+            )
         }
         .background(Color.white)
         .cornerRadius(10)
         .shadow(radius: 5)
+    }
+    
+    private func color(for rating: Double) -> Color {
+        rating < 6 ? .red : .green
     }
 }
 
