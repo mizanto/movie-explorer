@@ -1,5 +1,5 @@
 //
-//  MoviesList.swift
+//  MoviesResponse.swift
 //  movie-explorer
 //
 //  Created by Sergey Bendak on 16.06.2024.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct MoviesList: Decodable {
+struct MoviesResponse: Decodable {
     let page: Int
-    let results: [MovieListItem]
+    let results: [MovieItem]
     let totalPages: Int
     let totalResults: Int
 

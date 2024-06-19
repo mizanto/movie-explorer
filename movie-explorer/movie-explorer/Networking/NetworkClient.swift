@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Client {
-    func getPopularMovies() async throws -> [MovieListItem]
+    func getPopularMovies(page: Int) async throws -> MoviesResponse
 }
 
 class NetworkClient: ObservableObject {
@@ -28,9 +28,8 @@ class NetworkClient: ObservableObject {
             throw NetworkError.invalidURL
         }
         
-        urlComponents.queryItems = [
-            URLQueryItem(name: "api_key", value: apiKey)
-        ]
+        let queryItem = URLQueryItem(name: "api_key", value: apiKey)
+        urlComponents.queryItems = (urlComponents.queryItems ?? []) + [queryItem]
         
         guard let url = urlComponents.url else {
             throw NetworkError.invalidURL
@@ -66,14 +65,15 @@ class NetworkClient: ObservableObject {
 }
 
 extension NetworkClient: Client {
-    func getPopularMovies() async throws -> [MovieListItem] {
-        let list: MoviesList = try await sendRequest(endpoint: .popular)
-        return list.results
+    func getPopularMovies(page: Int) async throws -> MoviesResponse {
+        let endpoint = Endpoint.popular(page: page)
+        return try await sendRequest(endpoint: endpoint)
     }
 }
 
 class MockNetworkClient: ObservableObject, Client {
-    func getPopularMovies() async throws -> [MovieListItem] {
-        return MovieListItem.samples
+    func getPopularMovies(page: Int) async throws -> MoviesResponse {
+        return MoviesResponse(
+            page: 1, results: MovieItem.samples, totalPages: 5, totalResults: 50)
     }
 }

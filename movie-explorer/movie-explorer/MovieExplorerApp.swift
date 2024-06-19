@@ -13,8 +13,8 @@ struct MovieExplorerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            let viewModel = MoviesListViewModel(client: client)
-            MoviesListView(viewModel: viewModel)
+            let viewModel = MoviesViewModel(client: client)
+            MoviesView(viewModel: viewModel)
                 .environmentObject(client)
         }
     }

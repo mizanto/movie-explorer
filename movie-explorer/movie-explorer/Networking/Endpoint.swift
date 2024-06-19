@@ -8,16 +8,14 @@
 import Foundation
 
 extension NetworkClient {
-    enum Endpoint: String {
-        case popular
+    enum Endpoint {
+        case popular(page: Int)
         
         var fullString: String {
             switch self {
-                
-            case .popular:
-                return "\(movieBase)/popular"
+            case .popular(let page):
+                return "\(movieBase)/popular?page=\(page)"
             }
-            
         }
         
         private var movieBase: String { "https://api.themoviedb.org/3/movie" }
