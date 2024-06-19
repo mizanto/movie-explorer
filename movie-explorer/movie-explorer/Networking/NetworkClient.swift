@@ -11,7 +11,7 @@ protocol Client {
     func getPopularMovies() async throws -> [MovieListItem]
 }
 
-class NetworkClient {
+class NetworkClient: ObservableObject {
     private let apiKey = "a38d664ad8efeeb1f09d71ea36e78256"
     
     func sendRequest<T: Decodable>(
@@ -69,5 +69,11 @@ extension NetworkClient: Client {
     func getPopularMovies() async throws -> [MovieListItem] {
         let list: MoviesList = try await sendRequest(endpoint: .popular)
         return list.results
+    }
+}
+
+class MockNetworkClient: ObservableObject, Client {
+    func getPopularMovies() async throws -> [MovieListItem] {
+        return MovieListItem.samples
     }
 }

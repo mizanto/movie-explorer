@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct MovieExplorerApp: App {
+    @StateObject private var client = NetworkClient()
+
     var body: some Scene {
         WindowGroup {
-            MoviesListView()
+            let viewModel = MoviesListViewModel(client: client)
+            MoviesListView(viewModel: viewModel)
+                .environmentObject(client)
         }
     }
 }

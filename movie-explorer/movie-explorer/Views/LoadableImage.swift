@@ -23,8 +23,11 @@ struct LoadableImage: View {
                     .frame(width: geometry.size.width, height: height)
                     .clipped()
             } placeholder: {
-                ProgressView()
-                    .frame(width: geometry.size.width, height: height)
+                ZStack {
+                    Color.gray
+                    ProgressView()
+                }
+                .frame(width: geometry.size.width, height: height)
             }
         }
         .frame(height: height)

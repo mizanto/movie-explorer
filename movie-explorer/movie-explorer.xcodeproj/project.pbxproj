@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD1779C42C22C9A7005CC4B6 /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1779C32C22C9A7005CC4B6 /* MoviesListViewModel.swift */; };
 		AD6649FC2C1EBB2C0022AE88 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6649FB2C1EBB2C0022AE88 /* NetworkClient.swift */; };
 		AD6649FF2C1EBFC40022AE88 /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6649FE2C1EBFC40022AE88 /* HTTPMethods.swift */; };
 		AD664A012C1EBFED0022AE88 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD664A002C1EBFED0022AE88 /* NetworkError.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD1779C32C22C9A7005CC4B6 /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		AD6649FB2C1EBB2C0022AE88 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		AD6649FE2C1EBFC40022AE88 /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		AD664A002C1EBFED0022AE88 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -48,6 +50,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD1779C22C22C97D005CC4B6 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				ADCA57E82C1D96E9002533EB /* MoviesListView.swift */,
+				ADCA57F42C1D97E9002533EB /* MovieCard.swift */,
+				AD1779C32C22C9A7005CC4B6 /* MoviesListViewModel.swift */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
 		AD6649FD2C1EBF8B0022AE88 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +120,7 @@
 		ADD0584C2C21759500E14436 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ADCA57E82C1D96E9002533EB /* MoviesListView.swift */,
-				ADCA57F42C1D97E9002533EB /* MovieCard.swift */,
+				AD1779C22C22C97D005CC4B6 /* Movies */,
 				ADD0584D2C2175C700E14436 /* LoadableImage.swift */,
 			);
 			path = Views;
@@ -193,6 +204,7 @@
 				ADCA57F72C1D9821002533EB /* MovieListItem.swift in Sources */,
 				ADCA57E72C1D96E9002533EB /* MovieExplorerApp.swift in Sources */,
 				ADCA57F52C1D97E9002533EB /* MovieCard.swift in Sources */,
+				AD1779C42C22C9A7005CC4B6 /* MoviesListViewModel.swift in Sources */,
 				AD664A062C1ED0B10022AE88 /* MoviesList.swift in Sources */,
 				ADD0584E2C2175C700E14436 /* LoadableImage.swift in Sources */,
 			);
