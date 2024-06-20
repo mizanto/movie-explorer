@@ -7,8 +7,9 @@
 
 import Foundation
 
-protocol Client {
+protocol ClientProtocol {
     func getPopularMovies(page: Int) async throws -> MoviesResponse
+    func getMovieDetail(id: Int) async throws -> MovieDetail
 }
 
 class NetworkClient: ObservableObject {
@@ -64,16 +65,24 @@ class NetworkClient: ObservableObject {
     }
 }
 
-extension NetworkClient: Client {
+extension NetworkClient: ClientProtocol {
     func getPopularMovies(page: Int) async throws -> MoviesResponse {
-        let endpoint = Endpoint.popular(page: page)
+        let endpoint = Endpoint.popularMovies(page: page)
         return try await sendRequest(endpoint: endpoint)
+    }
+    
+    func getMovieDetail(id: Int) async throws -> MovieDetail {
+        return try await sendRequest(endpoint: .movieDetail(id: id))
     }
 }
 
-class MockNetworkClient: ObservableObject, Client {
+class MockNetworkClient: ObservableObject, ClientProtocol {
     func getPopularMovies(page: Int) async throws -> MoviesResponse {
         return MoviesResponse(
-            page: 1, results: MovieItem.samples, totalPages: 5, totalResults: 50)
+            page: 1, results: Movie.samples, totalPages: 5, totalResults: 50)
+    }
+    
+    func getMovieDetail(id: Int) async throws -> MovieDetail {
+        return MovieDetail.mock
     }
 }

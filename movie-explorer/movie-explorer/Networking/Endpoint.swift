@@ -9,12 +9,15 @@ import Foundation
 
 extension NetworkClient {
     enum Endpoint {
-        case popular(page: Int)
+        case popularMovies(page: Int)
+        case movieDetail(id: Int)
         
         var fullString: String {
             switch self {
-            case .popular(let page):
+            case .popularMovies(let page):
                 return "\(movieBase)/popular?page=\(page)"
+            case .movieDetail(let id):
+                return "\(movieBase)/\(id)"
             }
         }
         

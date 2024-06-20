@@ -14,8 +14,8 @@ struct MovieExplorerApp: App {
     var body: some Scene {
         WindowGroup {
             let viewModel = MoviesViewModel(client: client)
-            MoviesView(viewModel: viewModel)
-                .environmentObject(client)
+            MoviesView()
+                .environmentObject(viewModel)
         }
     }
 }

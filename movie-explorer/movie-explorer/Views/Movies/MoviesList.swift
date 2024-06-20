@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct MoviesList: View {
-    let movies: [MovieItem]
-    let currentPage: Int
-    let totalPages: Int
-    let onItemAppear: (MovieItem) async -> Void
+    let movies: [Movie]
+    let showLoading: Bool
+    let onItemAppear: (Movie) async -> Void
 
     var body: some View {
         List {
@@ -22,7 +21,7 @@ struct MoviesList: View {
                         await onItemAppear(movie)
                     }
             }
-            if currentPage < totalPages {
+            if showLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity)
                     .listRowSeparator(.hidden)
@@ -35,9 +34,8 @@ struct MoviesList: View {
 struct MoviesList_Previews: PreviewProvider {
     static var previews: some View {
         MoviesList(
-            movies: MovieItem.samples,
-            currentPage: 1,
-            totalPages: 3,
+            movies: Movie.samples,
+            showLoading: true,
             onItemAppear: { _ in }
         )
     }

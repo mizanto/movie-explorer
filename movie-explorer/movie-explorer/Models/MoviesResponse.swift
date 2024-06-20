@@ -9,7 +9,7 @@ import Foundation
 
 struct MoviesResponse: Decodable {
     let page: Int
-    let results: [MovieItem]
+    let results: [Movie]
     let totalPages: Int
     let totalResults: Int
 

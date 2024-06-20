@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct MoviesView: View {
-    @StateObject private var viewModel: MoviesViewModel
-
-    init(viewModel: MoviesViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
-
+    @EnvironmentObject private var viewModel: MoviesViewModel
+    
     var body: some View {
         NavigationView {
             Group {
@@ -21,14 +17,31 @@ struct MoviesView: View {
                 case .idle, .loading:
                     ProgressView("Loading movies...")
                 case .loaded(let movies):
-                    MoviesList(
-                        movies: movies,
-                        currentPage: viewModel.currentPage,
-                        totalPages: viewModel.totalPages,
-                        onItemAppear: { movie in
-                            await viewModel.loadMoreMoviesIfNeeded(currentMovie: movie)
+                    List {
+                        ForEach(movies) { movie in
+                            ZStack {
+                                NavigationLink(
+                                    destination: MovieDetailView()
+                                        .environmentObject(viewModel.detailViewModel(for: movie)),
+                                    label: {
+                                        EmptyView()
+                                    }
+                                )
+                                
+                                MovieCard(movie: movie)
+                            }
+                            .listRowSeparator(.hidden)
+                            .task {
+                                await viewModel.loadMoreMoviesIfNeeded(current: movie)
+                            }
                         }
-                    )
+                        if viewModel.showLoading {
+                            ProgressView()
+                                .frame(maxWidth: .infinity)
+                                .listRowSeparator(.hidden)
+                        }
+                    }
+                    .listStyle(PlainListStyle())
                 case .failed(let error):
                     Text("Failed to fetch movies: \(error.localizedDescription)")
                 }
@@ -41,12 +54,8 @@ struct MoviesView: View {
     }
 }
 
-struct MoviesListView_Previews: PreviewProvider {
-    static var previews: some View {
-        let client = MockNetworkClient()
-        let viewModel = MoviesViewModel(client: client)
-        
-        MoviesView(viewModel: viewModel)
-            .environmentObject(client)
+struct EmptyButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
     }
 }

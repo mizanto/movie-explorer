@@ -1,5 +1,5 @@
 //
-//  MovieItem.swift
+//  Movie.swift
 //  movie-explorer
 //
 //  Created by Sergey Bendak on 15.06.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieItem: Identifiable, Decodable {
+struct Movie: Identifiable, Decodable {
     let id: Int
     let originalTitle: String
     let title: String
@@ -27,9 +27,9 @@ struct MovieItem: Identifiable, Decodable {
     }
 }
 
-extension MovieItem {
-    static var sample: MovieItem {
-        return MovieItem(
+extension Movie {
+    static var sample: Movie {
+        return Movie(
             id: 1022789,
             originalTitle: "Inside Out 2",
             title: "Inside Out 2",
@@ -40,9 +40,9 @@ extension MovieItem {
         )
     }
     
-    static var samples: [MovieItem] {
+    static var samples: [Movie] {
         return [
-            MovieItem(
+            Movie(
                 id: 1022789,
                 originalTitle: "Inside Out 2",
                 title: "Inside Out 2",
@@ -51,7 +51,7 @@ extension MovieItem {
                 voteAverage: 7.399,
                 backdropPath: "/stKGOm8UyhuLPR9sZLjs5AkmncA.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 653346,
                 originalTitle: "Kingdom of the Planet of the Apes",
                 title: "Kingdom of the Planet of the Apes",
@@ -60,7 +60,7 @@ extension MovieItem {
                 voteAverage: 6.815,
                 backdropPath: "/fqv8v6AycXKsivp1T5yKtLbGXce.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 573435,
                 originalTitle: "Bad Boys: Ride or Die",
                 title: "Bad Boys: Ride or Die",
@@ -69,7 +69,7 @@ extension MovieItem {
                 voteAverage: 6.976,
                 backdropPath: "/gRApXuxWmO2forYTuTmcz5RaNUV.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 1001311,
                 originalTitle: "Sous la Seine",
                 title: "Under Paris",
@@ -78,7 +78,7 @@ extension MovieItem {
                 voteAverage: 5.8,
                 backdropPath: "/hliXekHv7xc2cgXnMBLlp4Eihq8.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 823464,
                 originalTitle: "Godzilla x Kong: The New Empire",
                 title: "Godzilla x Kong: The New Empire",
@@ -87,7 +87,7 @@ extension MovieItem {
                 voteAverage: 7.218,
                 backdropPath: "/veIyxxi5Gs8gvztLEW1Ysb8rrzs.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 955555,
                 originalTitle: "범죄도시3",
                 title: "The Roundup: No Way Out",
@@ -96,7 +96,7 @@ extension MovieItem {
                 voteAverage: 7.02,
                 backdropPath: "/vblTCXOWUQGSc837vgbhDRi4HSc.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 929590,
                 originalTitle: "Civil War",
                 title: "Civil War",
@@ -105,7 +105,7 @@ extension MovieItem {
                 voteAverage: 7.016,
                 backdropPath: "/z121dSTR7PY9KxKuvwiIFSYW8cf.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 626412,
                 originalTitle: "외계+인 2부",
                 title: "Alienoid: Return to the Future",
@@ -114,7 +114,7 @@ extension MovieItem {
                 voteAverage: 6.612,
                 backdropPath: "/kZbTOcTrEGyroQMWQSGIRlNSkwP.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 719221,
                 originalTitle: "Tarot",
                 title: "Tarot",
@@ -123,7 +123,7 @@ extension MovieItem {
                 voteAverage: 6.48,
                 backdropPath: "/oavbmL3iddJUmC8nQjL6bLHwAP4.jpg"
             ),
-            MovieItem(
+            Movie(
                 id: 150540,
                 originalTitle: "Inside Out",
                 title: "Inside Out",

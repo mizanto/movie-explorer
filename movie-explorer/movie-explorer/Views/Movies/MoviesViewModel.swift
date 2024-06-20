@@ -12,16 +12,20 @@ class MoviesViewModel: ObservableObject {
     enum State {
         case idle
         case loading
-        case loaded([MovieItem])
+        case loaded([Movie])
         case failed(Error)
     }
     
     @Published var state: State = .idle
-    private let client: Client
-    var currentPage = 1
-    var totalPages = 1
+    let client: ClientProtocol
+    private var currentPage = 1
+    private var totalPages = 1
+    
+    var showLoading: Bool {
+        currentPage < totalPages
+    }
 
-    init(client: Client) {
+    init(client: ClientProtocol) {
         self.client = client
     }
 
@@ -38,7 +42,7 @@ class MoviesViewModel: ObservableObject {
     }
 
     @MainActor
-    func loadMoreMoviesIfNeeded(currentMovie movie: MovieItem) async {
+    func loadMoreMoviesIfNeeded(current movie: Movie) async {
         guard currentPage < totalPages else { return }
         
         if case .loaded(let movies) = state, let lastMovie = movies.last {
@@ -55,5 +59,9 @@ class MoviesViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func detailViewModel(for movie: Movie) -> MovieDetailViewModel {
+        MovieDetailViewModel(client: client, movie: movie)
     }
 }

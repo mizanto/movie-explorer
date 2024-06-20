@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieCard: View {
-    let movie: MovieItem
+    let movie: Movie
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -56,5 +56,5 @@ struct MovieCard: View {
 }
 
 #Preview {
-    MovieCard(movie: MovieItem.sample)
+    MovieCard(movie: Movie.sample)
 }
