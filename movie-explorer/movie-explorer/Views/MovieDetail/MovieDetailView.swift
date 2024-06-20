@@ -12,26 +12,26 @@ struct MovieDetailView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            switch viewModel.state {
-            case .idle, .loading:
-                ProgressView("Loading movie details...")
-            case .loaded(let movie):
+            if let errorMessage = viewModel.errorMessage {
+                Text("Failed to load movie details: \(errorMessage)")
+                    .foregroundColor(.red)
+            } else {
                 VStack(alignment: .leading, spacing: 8) {
-                    if let backdropPath = movie.backdropPath {
+                    if let backdropPath = viewModel.movie.backdropPath {
                         LoadableImage(path: backdropPath, height: 240)
                     }
-                    Text(movie.title)
+                    Text(viewModel.movie.title)
                         .font(.largeTitle)
                         .bold()
                         .padding(.vertical, 4)
-                    if let releaseDate = movie.releaseDate {
+                    if let releaseDate = viewModel.movie.releaseDate {
                         HStack {
                             Text("Release Date:")
                                 .bold()
                             Text(releaseDate)
                         }
                     }
-                    if let genres = movie.genres {
+                    if let genres = viewModel.movie.genres {
                         HStack(alignment: .top) {
                             Text("Genres:")
                                 .bold()
@@ -41,13 +41,13 @@ struct MovieDetailView: View {
                     HStack {
                         Text("Rating:")
                             .bold()
-                        if let voteCount = movie.voteCount {
-                            Text("\(movie.voteAverage, specifier: "%.1f") (\(voteCount) votes)")
+                        if let voteCount = viewModel.movie.voteCount {
+                            Text("\(viewModel.movie.voteAverage, specifier: "%.1f") (\(voteCount) votes)")
                         } else {
-                            Text("\(movie.voteAverage, specifier: "%.1f")")
+                            Text("\(viewModel.movie.voteAverage, specifier: "%.1f")")
                         }
                     }
-                    if let overview = movie.overview {
+                    if let overview = viewModel.movie.overview {
                         Text(overview)
                             .font(.system(size: 21))
                             .padding(.vertical, 4)
@@ -55,8 +55,6 @@ struct MovieDetailView: View {
                     
                     Spacer()
                 }
-            case .failed(let errorMessage):
-                Text("Failed to load movie details: \(errorMessage)")
             }
         }
         .padding()
@@ -66,12 +64,3 @@ struct MovieDetailView: View {
         }
     }
 }
-
-//struct MovieDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let client = MockNetworkClient()
-//        let viewModel = MovieDetailViewModel(client: client, movie: Movie.sample)
-//        MovieDetailView()
-//            .environmentObject(viewModel)
-//    }
-//}
