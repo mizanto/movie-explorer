@@ -67,11 +67,11 @@ struct MovieDetailView: View {
     }
 }
 
-struct MovieDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let client = MockNetworkClient()
-        let viewModel = MovieDetailViewModel(client: client, movie: Movie.sample)
-        MovieDetailView()
-            .environmentObject(viewModel)
-    }
-}
+//struct MovieDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let client = MockNetworkClient()
+//        let viewModel = MovieDetailViewModel(client: client, movie: Movie.sample)
+//        MovieDetailView()
+//            .environmentObject(viewModel)
+//    }
+//}

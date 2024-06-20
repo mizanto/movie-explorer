@@ -20,3 +20,12 @@ struct MoviesResponse: Decodable {
         case totalResults = "total_results"
     }
 }
+
+extension MoviesResponse {
+    static var mock: MoviesResponse {
+        MoviesResponse(page: 1, 
+                       results: Movie.mocks,
+                       totalPages: 5,
+                       totalResults: 100)
+    }
+}

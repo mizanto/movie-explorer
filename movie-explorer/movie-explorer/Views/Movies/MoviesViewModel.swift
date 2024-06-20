@@ -9,11 +9,25 @@ import SwiftUI
 import Combine
 
 class MoviesViewModel: ObservableObject {
-    enum State {
+    enum State: Equatable {
         case idle
         case loading
         case loaded([Movie])
-        case failed(Error)
+        case failed(String)
+        
+        static func ==(lhs: State, rhs: State) -> Bool {
+            switch (lhs, rhs) {
+            case (.idle, .idle),
+                 (.loading, .loading):
+                return true
+            case (.loaded(let lhsMovies), .loaded(let rhsMovies)):
+                return lhsMovies == rhsMovies
+            case (.failed(let lhsError), .failed(let rhsError)):
+                return lhsError == rhsError
+            default:
+                return false
+            }
+        }
     }
     
     @Published var state: State = .idle
@@ -37,7 +51,7 @@ class MoviesViewModel: ObservableObject {
             self.state = .loaded(movieList.results)
             self.totalPages = movieList.totalPages
         } catch {
-            self.state = .failed(error)
+            self.state = .failed(error.localizedDescription)
         }
     }
 
@@ -55,7 +69,7 @@ class MoviesViewModel: ObservableObject {
                     }
                     self.totalPages = movieList.totalPages
                 } catch {
-                    self.state = .failed(error)
+                    self.state = .failed(error.localizedDescription)
                 }
             }
         }

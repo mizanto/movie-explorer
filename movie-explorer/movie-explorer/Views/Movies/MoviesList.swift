@@ -34,7 +34,7 @@ struct MoviesList: View {
 struct MoviesList_Previews: PreviewProvider {
     static var previews: some View {
         MoviesList(
-            movies: Movie.samples,
+            movies: Movie.mocks,
             showLoading: true,
             onItemAppear: { _ in }
         )

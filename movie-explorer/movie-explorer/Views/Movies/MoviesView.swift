@@ -43,7 +43,7 @@ struct MoviesView: View {
                     }
                     .listStyle(PlainListStyle())
                 case .failed(let error):
-                    Text("Failed to fetch movies: \(error.localizedDescription)")
+                    Text("Failed to fetch movies: \(error)")
                 }
             }
             .navigationBarTitle("Popular Movies")

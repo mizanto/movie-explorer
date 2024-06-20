@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Identifiable, Decodable {
+struct Movie: Identifiable, Equatable, Decodable {
     let id: Int
     let originalTitle: String
     let title: String
@@ -28,7 +28,7 @@ struct Movie: Identifiable, Decodable {
 }
 
 extension Movie {
-    static var sample: Movie {
+    static var mock: Movie {
         return Movie(
             id: 1022789,
             originalTitle: "Inside Out 2",
@@ -40,7 +40,7 @@ extension Movie {
         )
     }
     
-    static var samples: [Movie] {
+    static var mocks: [Movie] {
         return [
             Movie(
                 id: 1022789,

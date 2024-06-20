@@ -56,5 +56,5 @@ struct MovieCard: View {
 }
 
 #Preview {
-    MovieCard(movie: Movie.sample)
+    MovieCard(movie: Movie.mock)
 }

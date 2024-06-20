@@ -79,7 +79,7 @@ extension NetworkClient: ClientProtocol {
 class MockNetworkClient: ObservableObject, ClientProtocol {
     func getPopularMovies(page: Int) async throws -> MoviesResponse {
         return MoviesResponse(
-            page: 1, results: Movie.samples, totalPages: 5, totalResults: 50)
+            page: 1, results: Movie.mocks, totalPages: 5, totalResults: 50)
     }
     
     func getMovieDetail(id: Int) async throws -> MovieDetail {
