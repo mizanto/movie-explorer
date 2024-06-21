@@ -10,6 +10,15 @@ import SwiftUI
 struct MovieDetailView: View {
     @EnvironmentObject private var viewModel: MovieDetailViewModel
     
+    struct Model {
+        let imagePath: String?
+        let title: String
+        let releaseDate: String?
+        let genres: String?
+        let rating: String
+        let overview: String?
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             if let errorMessage = viewModel.errorMessage {
@@ -17,37 +26,26 @@ struct MovieDetailView: View {
                     .foregroundColor(.red)
             } else {
                 VStack(alignment: .leading, spacing: 8) {
-                    if let backdropPath = viewModel.movie.backdropPath {
+                    if let backdropPath = viewModel.model.imagePath {
                         LoadableImage(path: backdropPath, height: 240)
                     }
-                    Text(viewModel.movie.title)
+                    
+                    Text(viewModel.model.title)
                         .font(.largeTitle)
                         .bold()
                         .padding(.vertical, 4)
-                    if let releaseDate = viewModel.movie.releaseDate {
-                        HStack {
-                            Text("Release Date:")
-                                .bold()
-                            Text(releaseDate)
-                        }
+                    
+                    if let releaseDate = viewModel.model.releaseDate {
+                        InfoView(title: "Release Date:", value: releaseDate)
                     }
-                    if let genres = viewModel.movie.genres {
-                        HStack(alignment: .top) {
-                            Text("Genres:")
-                                .bold()
-                            Text(genres.joined(separator: ", "))
-                        }
+                    
+                    if let genres = viewModel.model.genres {
+                        InfoView(title: "Genres:", value: genres)
                     }
-                    HStack {
-                        Text("Rating:")
-                            .bold()
-                        if let voteCount = viewModel.movie.voteCount {
-                            Text("\(viewModel.movie.voteAverage, specifier: "%.1f") (\(voteCount) votes)")
-                        } else {
-                            Text("\(viewModel.movie.voteAverage, specifier: "%.1f")")
-                        }
-                    }
-                    if let overview = viewModel.movie.overview {
+                    
+                    InfoView(title: "Rating:", value: viewModel.model.rating)
+                    
+                    if let overview = viewModel.model.overview {
                         Text(overview)
                             .font(.system(size: 21))
                             .padding(.vertical, 4)
@@ -61,6 +59,20 @@ struct MovieDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await viewModel.loadMovieDetail()
+        }
+    }
+}
+
+extension MovieDetailView {
+    struct InfoView: View {
+        let title: String
+        let value: String
+        
+        var body: some View {
+            HStack(alignment: .top) {
+                Text(title).bold()
+                Text(value)
+            }
         }
     }
 }

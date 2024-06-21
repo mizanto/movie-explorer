@@ -27,17 +27,16 @@ class MovieDetailViewModelTests: XCTestCase {
     
     func testMovieDetailInitial() {
         XCTAssertNil(viewModel.errorMessage)
-        XCTAssertEqual(viewModel.movie.id, movie.id)
-        XCTAssertEqual(viewModel.movie.title, movie.title)
-        XCTAssertNil(viewModel.movie.overview)
+        XCTAssertEqual(viewModel.model.title, movie.title)
+        XCTAssertNil(viewModel.model.overview)
     }
     
     func testLoadMovieDetailSuccess() async {
         await viewModel.loadMovieDetail()
         
         XCTAssertNil(viewModel.errorMessage)
-        XCTAssertEqual(viewModel.movie.id, MovieDetail.mock.id)
-        XCTAssertEqual(viewModel.movie.title, MovieDetail.mock.title)
+        XCTAssertEqual(viewModel.model.title, MovieDetail.mock.title)
+        XCTAssertNotNil(viewModel.model.overview)
     }
     
     func testLoadMovieDetailFailure() async {
